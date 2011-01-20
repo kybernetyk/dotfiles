@@ -1,3 +1,10 @@
 My dotfiles
+===========
 
+vimrc - config file for vim
+zshrc - config for zshell
+ext/  - external stuff like color schemes, scripts, plugins, etc
+
+Installation
+------------
 To install symlink <file> to ~/.<file>
