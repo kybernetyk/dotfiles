@@ -29,3 +29,6 @@ setopt list_packed
 setopt no_share_history
 
 bindkey "\e[3~" delete-char
+
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin

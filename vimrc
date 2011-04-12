@@ -330,4 +330,11 @@ let Tlist_Sort_Type = "order"
 let Tlist_Use_SingleClick = 1
 let tlist_c_settings = 'c;f:FUNCTIONS'
 
+function GoFormat()
+		let regel=line(".")
+		%!/usr/local/bin/gofmt
+			call cursor(regel, 1)
+			endfunction
 
+autocmd Filetype go command! Fmt call GoFormat()
+map <C-H> :Fmt<CR>
