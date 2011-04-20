@@ -8,10 +8,14 @@ if v:progname =~? "evim"
 	finish
 endif
 
+
 set t_Co=256
-colorscheme tir_black
 if has("gui_running")
-	colorscheme oceandeep
+	set background=light
+	colorscheme darkblue2 
+else
+	set background=dark
+	colorscheme tir_black
 endif
 " colorscheme oceanblack
 " Use Vim settings, rather then Vi settings (much better!).
@@ -343,4 +347,5 @@ function GoFormat()
 
 autocmd Filetype go command! Fmt call GoFormat()
 map <C-H> :Fmt<CR>
+
 
