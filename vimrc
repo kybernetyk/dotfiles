@@ -200,13 +200,14 @@ if has("gui_running")
 	if has('title')
 		set titlestring=editing:\ %-25.55F\ %a%r%m titlelen=70 "
 	endif
-	set guifont=Terminus\ 12
+	set guifont=Monaco:h13
+	"set guifont=Terminus:h14
 	"set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
-	no toolbar
-	set guioptions-=T
+	"no toolbar
+	"set guioptions-=T
 	" don't use ALT keys for menus.
 	set winaltkeys=no
-	set guicursor=a:blinkon0
+	"set guicursor=a:blinkon0
 
 endif " has("gui")
 
