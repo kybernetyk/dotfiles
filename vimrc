@@ -10,6 +10,9 @@ endif
 
 set t_Co=256
 colorscheme tir_black
+if has("gui_running")
+	colorscheme oceandeep
+endif
 " colorscheme oceanblack
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -36,7 +39,7 @@ set incsearch		" do incremental searching
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " Don't use Ex mode, use Q for formatting
-map Q gq
+" map Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -301,9 +304,6 @@ let c_syntax_for_h=1
 ""imap <PageUp> <nop>
 ""imap <PageDown> <nop>
 
-""nnoremap L :tabnext<CR>
-"nnoremap H :tabprev<CR>
-
 nnoremap <silent> <F1> :A<CR>
 
 nnoremap <silent> <F2> :Tlist<CR>
@@ -311,6 +311,10 @@ inoremap <silent> <F2> <ESC>:Tlist<CR>
 
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 inoremap <silent> <F3> :NERDTreeToggle<CR>
+
+" simple tab switchting
+nnoremap <silent> T gT
+nnoremap <silent> t gt  
 
 " settings for taglist
 let Tlist_Auto_Highlight_Tag = 1
@@ -339,3 +343,4 @@ function GoFormat()
 
 autocmd Filetype go command! Fmt call GoFormat()
 map <C-H> :Fmt<CR>
+
