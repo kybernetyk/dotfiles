@@ -31,6 +31,9 @@ setopt no_share_history
 bindkey "\e[3~" delete-char
 bindkey -e		#emacs
 
+bindkey '\e[A' history-search-backward #up arrow
+bindkey '\e[B' history-search-forward #down arrow
+
 #GNU ls
 alias ls='ls --color'
 
