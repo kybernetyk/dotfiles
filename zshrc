@@ -37,9 +37,6 @@ alias ls='ls --color'
 autoload -U colors
 colors
 
-export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin
-
 function set_prompt {
 	#--------------------------------------------------------------------------------------------------------------------
 	# function issucceed: Sets the "HISTORY_COLOR" based on the success of the previous command
@@ -99,5 +96,9 @@ function set_prompt {
 ################################################################
 
 set_prompt "$@"
+
+#go lang settings
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
 
 
