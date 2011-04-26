@@ -208,6 +208,10 @@ if has("gui_running")
 		set titlestring=editing:\ %-25.55F\ %a%r%m titlelen=70 "
 	endif
 	set guifont=Monaco:h13
+	
+if v:progname =~? "gvim"
+	set guifont=Monospace
+endif
 	"set guifont=Terminus:h14
 	"set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
 	"no toolbar
