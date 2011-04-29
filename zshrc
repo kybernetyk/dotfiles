@@ -104,4 +104,4 @@ set_prompt "$@"
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
 
-
+export PATH=$PATH:$HOME/bin
