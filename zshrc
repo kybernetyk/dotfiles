@@ -1,6 +1,15 @@
 # zshrc by j. szpilewski
 # it's a mess
 # nntp.pl
+autoload -U colors
+colors
+eval `dircolors -b`
+
+autoload -U compinit promptinit
+compinit
+promptinit
+
+
 setopt auto_pushd
 setopt PUSHD_IGNOREDUPS
 setopt PUSHD_SILENT
@@ -9,6 +18,11 @@ setopt no_beep
 
 export CLICOLOR=1
 export LSCOLORS=dxfxcxdxgxegedabagacad
+export ZLSCOLORS="${LS_COLORS}"
+zmodload  zsh/complist
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31' 
+
 
 #show all killable processes for kill <tab>
 zstyle ':completion:*:kill:*:processes' command "ps x"
@@ -23,6 +37,7 @@ zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
 
+
 #don't waste space in completion lists
 setopt list_packed
 
@@ -36,9 +51,6 @@ bindkey '\e[B' history-search-forward #down arrow
 
 #GNU ls
 alias ls='ls --color'
-
-autoload -U colors
-colors
 
 function set_prompt {
 	#--------------------------------------------------------------------------------------------------------------------
@@ -105,3 +117,5 @@ export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
 
 export PATH=$PATH:$HOME/bin
+
+export BROWSER=chromium
