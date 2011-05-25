@@ -199,8 +199,8 @@ set wildchar=<TAB>
 set nowrap
 
 " omni menu colors
-hi Pmenu guibg=#ffffff
-hi PmenuSel guibg=#555555 guifg=#ffffff
+hi Pmenu guibg=#7f7f7f guifg=#ffffff
+hi PmenuSel guibg=#d9fefe guifg=#002e41
 
 if has("gui_running")
 	"FIXME: fix for both term and gui
