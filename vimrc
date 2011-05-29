@@ -346,10 +346,17 @@ let tlist_c_settings = 'c;f:FUNCTIONS'
 function GoFormat()
 		let regel=line(".")
 		%!/usr/local/bin/gofmt
-			call cursor(regel, 1)
-			endfunction
+		call cursor(regel, 1)
+endfunction
+
+function CFormat()
+	let regel=line(".")
+	%!/opt/local/bin/astyle
+	call cursor(regel, 1)
+endfunction
 
 autocmd Filetype go command! Fmt call GoFormat()
+autocmd Filetype c command! Fmt call CFormat()
 map <C-H> :Fmt<CR>
 
 

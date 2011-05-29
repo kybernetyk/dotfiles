@@ -1,0 +1,9 @@
+--style=linux
+--indent=tab=4
+--pad-header
+--unpad-paren
+#--delete-empty-lines
+--align-pointer=name
+--mode=c
+--suffix=none
+--lineend=linux
