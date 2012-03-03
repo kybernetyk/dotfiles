@@ -1,6 +1,6 @@
---style=1tbs
---indent=tab=4
---brackets=linux
+--style=java
+--indent=tab=2
+--brackets=attach
 --pad-header
 --unpad-paren
 --align-pointer=name
@@ -8,3 +8,8 @@
 --suffix=none
 --lineend=linux
 --pad-oper
+--indent-classes
+--indent-namespaces
+--indent-preprocessor
+--indent-col1-comments
+--break-blocks
