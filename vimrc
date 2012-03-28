@@ -1,6 +1,6 @@
-" vimrc by j. szpilewski
+" vimrc by Leon Szpilewski
 " it's a mess :]
-" nntp.pl
+" http://xr0.eu 
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -11,8 +11,11 @@ endif
 
 set t_Co=256
 if has("gui_running")
-	set background=light
-	colorscheme darkblue2 
+	"looks like mvim on os x supports now dark backgrounds! finally!
+	"set background=light
+	"colorscheme darkblue2
+	set background=dark
+	colorscheme tir_black
 else
 	set background=dark
 	colorscheme tir_black
@@ -323,6 +326,8 @@ inoremap <silent> <F3> :NERDTreeToggle<CR>
 " simple tab switchting
 nnoremap <silent> T gT
 nnoremap <silent> t gt  
+nnoremap <silent> <C-t> :tabnew<CR>
+nnoremap <silent> <C-w> :tabclose<CR>
 
 " settings for taglist
 let Tlist_Auto_Highlight_Tag = 1
