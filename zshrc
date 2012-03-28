@@ -51,12 +51,15 @@ setopt share_history
 
 bindkey "\e[3~" delete-char
 
-export GOROOT=$HOME/go
+#export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$HOME/revtools
 export PATH=$HOME/my_gcc/bin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/mysql-5.5.20-osx10.6-x86_64/lib:$DYLD_LIBRARY_PATH
 export PATH=/opt/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/share/python:$PATH
+export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 
 function prompt_kerbaugh_help { print "nothing customizable yet"}
 
