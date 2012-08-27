@@ -55,12 +55,13 @@ bindkey "\e[3~" delete-char
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$HOME/revtools
 export PATH=$HOME/my_gcc/bin:$PATH
-export DYLD_LIBRARY_PATH=/usr/local/mysql-5.5.20-osx10.6-x86_64/lib:$DYLD_LIBRARY_PATH
+#export DYLD_LIBRARY_PATH=/usr/local/mysql-5.5.20-osx10.6-x86_64/lib:$DYLD_LIBRARY_PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/share/python:$PATH
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-
+#export GOPATH=$HOME/Documents/Go/medstime/src
+export PATH=/usr/local/sbin:$PATH
 function prompt_kerbaugh_help { print "nothing customizable yet"}
 
 function prompt_kerbaugh_setup {
@@ -84,7 +85,8 @@ function prompt_kerbaugh_setup {
 
 	function prompt_kerbaugh_precmd {
 		issucceed "$?"
-	    PS1="${PREFIX}[$BOLD_BLUE%n$BLACK@$BOLD_GREEN%m$BLACK]$BOLD_MAUVE%3c $HIST_COLOR%! $DEFAULT%# "
+#		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK@$BOLD_GREEN%m$BLACK]$BOLD_MAUVE%3c $HIST_COLOR%! $DEFAULT%# $RED $GREEN"
+PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK) $RED $GREEN"
 	}
 
  
@@ -122,3 +124,11 @@ function prompt_kerbaugh_setup {
 ################################################################
 
 prompt_kerbaugh_setup "$@"
+
+export LC_CTYPE="en_US.UTF-8"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+
+fortune
+

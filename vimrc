@@ -453,23 +453,29 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 "
 " -----------------------------------------------------------------------------------------
 
-inoremap ( ()<Esc>:call BC_AddChar(")")<CR>i
-inoremap { {<CR>}<Esc>:call BC_AddChar("}")<CR><Esc>kA<CR>
-inoremap [ []<Esc>:call BC_AddChar("]")<CR>i
-inoremap " ""<Esc>:call BC_AddChar("\"")<CR>i
-" jump out of parenthesis
-inoremap <C-j> <Esc>:call search(BC_GetChar(), "W")<CR>a
+"inoremap ( ()<Esc>:call BC_AddChar(")")<CR>i
+"inoremap { {<CR>}<Esc>:call BC_AddChar("}")<CR><Esc>kA<CR>
+"inoremap [ []<Esc>:call BC_AddChar("]")<CR>i
+"inoremap " ""<Esc>:call BC_AddChar("\"")<CR>i
+"" jump out of parenthesis
+"inoremap <C-j> <Esc>:call search(BC_GetChar(), "W")<CR>a
+"
+"function! BC_AddChar(schar)
+" if exists("b:robstack")
+" let b:robstack = b:robstack . a:schar
+" else
+" let b:robstack = a:schar
+" endif
+"endfunction
+"
+"function! BC_GetChar()
+" let l:char = b:robstack[strlen(b:robstack)-1]
+" let b:robstack = strpart(b:robstack, 0, strlen(b:robstack)-1)
+" return l:char
+"endfunction
+"
+let g:slime_target = "tmux"
 
-function! BC_AddChar(schar)
- if exists("b:robstack")
- let b:robstack = b:robstack . a:schar
- else
- let b:robstack = a:schar
- endif
-endfunction
-
-function! BC_GetChar()
- let l:char = b:robstack[strlen(b:robstack)-1]
- let b:robstack = strpart(b:robstack, 0, strlen(b:robstack)-1)
- return l:char
-endfunction
+let g:vimclojure#HighlightBuiltins=1   " Highlight Clojure's builtins
+let g:vimclojure#ParenRainbow=1        " Rainbow parentheses'!
+let g:vimclojure#DynamicHighlighting=1 " Dynamically highlight functions
