@@ -316,6 +316,7 @@ let c_syntax_for_h=1
 ""imap <PageDown> <nop>
 
 nnoremap <silent> <F1> :A<CR>
+inoremap <silent> <F1> <ESC><CR>
 
 nnoremap <silent> <F2> :Tlist<CR>
 inoremap <silent> <F2> <ESC>:Tlist<CR>
