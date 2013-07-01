@@ -1,7 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/Leon/Library/Services/fmshot.workflow/Contents/QuickLook'
-let g:netrw_dirhist_2='/Users/Leon/Library/Services/fmshot.workflow/Contents'
-let g:netrw_dirhist_3='/Users/Leon/Library/Services/fmshot.workflow'
-let g:netrw_dirhist_4='/Users/Leon/Library/Services/fmshot.workflow/Contents'
-let g:netrw_dirhist_5='/Users/Leon/Code/Pragmatic! ToDo/.git'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/Leon/Code/web/railslearn/demo'
+let g:netrw_dirhist_2='/Users/Leon/.zsh/git-prompt'
+let g:netrw_dirhist_3='/Users/Leon/.slime'

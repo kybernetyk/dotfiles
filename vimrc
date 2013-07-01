@@ -327,8 +327,8 @@ inoremap <silent> <F3> :NERDTreeToggle<CR>
 " simple tab switchting
 nnoremap <silent> T gT
 nnoremap <silent> t gt  
-nnoremap <silent> <C-t> :tabnew<CR>
-nnoremap <silent> <C-w> :tabclose<CR>
+"nnoremap <silent> <C-t> :tabnew<CR>
+"nnoremap <silent> <C-w> :tabclose<CR>
 
 " settings for taglist
 let Tlist_Auto_Highlight_Tag = 1
@@ -475,8 +475,22 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 " return l:char
 "endfunction
 "
-let g:slime_target = "tmux"
+"let g:slime_target = "tmux"
 
 let g:vimclojure#HighlightBuiltins=1   " Highlight Clojure's builtins
 let g:vimclojure#ParenRainbow=1        " Rainbow parentheses'!
 let g:vimclojure#DynamicHighlighting=1 " Dynamically highlight functions
+"let g:vimclojure#SplitPos=
+"let g:vimclojure#WantNailgun=1
+"let g:vimclojure#NailgunClient="/usr/local/bin/ng"
+
+"" ctrl-m to send whole file to tmux repl
+"nmap <C-m> ggVG<C-c><C-c>
+
+
+"" ctrl-c ctrl-c to send current form to tmux repl
+set rtp+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
+
+imap  <C-x><C-o>

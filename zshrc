@@ -86,7 +86,8 @@ function prompt_kerbaugh_setup {
 	function prompt_kerbaugh_precmd {
 		issucceed "$?"
 #		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK@$BOLD_GREEN%m$BLACK]$BOLD_MAUVE%3c $HIST_COLOR%! $DEFAULT%# $RED $GREEN"
-PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK) $RED $GREEN"
+PENIS=$(git_super_status)
+PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)$PENIS $RED $GREEN"
 	}
 
  
@@ -123,12 +124,17 @@ PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)
 
 ################################################################
 
+
+source /Users/kybernetyk/zsh-git-prompt/zshrc.sh
+#PROMPT='%B%m%~%b$(git_super_status) %# '
+
 prompt_kerbaugh_setup "$@"
 
 export LC_CTYPE="en_US.UTF-8"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+export PATH=$HOME/bin:$PATH
 
 fortune
 
