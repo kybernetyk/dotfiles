@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/Leon/Code/web/railslearn/demo'
-let g:netrw_dirhist_2='/Users/Leon/.zsh/git-prompt'
-let g:netrw_dirhist_3='/Users/Leon/.slime'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/kyb/code/soundhammer/.git/modules'
+let g:netrw_dirhist_2='/Users/kyb/r'
+let g:netrw_dirhist_3='/Users/kyb/code/fettemama2/.git'
+let g:netrw_dirhist_4='/usr/local/etc/privoxy'
+let g:netrw_dirhist_5='/Users/kyb/code/tempserv/.git'
+let g:netrw_dirhist_6='/Users/kyb/code/BatteryStatPro/.git'
+let g:netrw_dirhist_7='/Users/kyb/code/vector3/.git/modules/cmrater'
+let g:netrw_dirhist_8='/Users/kyb/.vim'

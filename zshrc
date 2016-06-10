@@ -52,14 +52,11 @@ setopt share_history
 bindkey "\e[3~" delete-char
 
 #export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$HOME/revtools
-export PATH=$HOME/my_gcc/bin:$PATH
 #export DYLD_LIBRARY_PATH=/usr/local/mysql-5.5.20-osx10.6-x86_64/lib:$DYLD_LIBRARY_PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/share/python:$PATH
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+#export PATH=/usr/local/share/python:$PATH
+#export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 #export GOPATH=$HOME/Documents/Go/medstime/src
 export PATH=/usr/local/sbin:$PATH
 function prompt_kerbaugh_help { print "nothing customizable yet"}
@@ -87,7 +84,7 @@ function prompt_kerbaugh_setup {
 		issucceed "$?"
 #		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK@$BOLD_GREEN%m$BLACK]$BOLD_MAUVE%3c $HIST_COLOR%! $DEFAULT%# $RED $GREEN"
 PENIS=$(git_super_status)
-PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)$PENIS $RED $GREEN"
+PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)$PENIS $RED# $DEFAULT"
 	}
 
  
@@ -125,7 +122,7 @@ PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)
 ################################################################
 
 
-source /Users/kybernetyk/zsh-git-prompt/zshrc.sh
+source /Users/kyb/zsh-git-prompt/zshrc.sh
 #PROMPT='%B%m%~%b$(git_super_status) %# '
 
 prompt_kerbaugh_setup "$@"
@@ -133,8 +130,12 @@ prompt_kerbaugh_setup "$@"
 export LC_CTYPE="en_US.UTF-8"
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+#export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 export PATH=$HOME/bin:$PATH
+export PATH=$PATH:$HOME/code/huescripts
+export RUST_SRC_PATH="/Users/kyb/rustc-1.0.0/src"
 
-fortune
+alias v="ls -lh"
+alias vv="ls -thor"
 
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
