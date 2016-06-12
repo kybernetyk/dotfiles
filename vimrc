@@ -12,16 +12,12 @@ inoremap jj <ESC>
 
 set t_Co=256
 if has("gui_running")
-	"looks like mvim on os x supports now dark backgrounds! finally!
-	"set background=light
-	"colorscheme darkblue2
 	set background=dark
 	colorscheme tir_black
 else
-	set background=dark
-	colorscheme tir_black
+ set background=dark
+ colorscheme slate
 endif
-" colorscheme oceanblack
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -31,6 +27,7 @@ set shiftwidth=2
 syntax on
 set hidden
 
+set nocursorline          " highlight current line
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -280,8 +277,8 @@ set visualbell t_vb=
 " column with a different color
 "autocmd WinEnter * setlocal cursorcolumn
 "autocmd BufEnter * setlocal cursorcolumn
-autocmd WinEnter * setlocal cursorline
-autocmd BufEnter * setlocal cursorline
+"autocmd WinEnter * setlocal cursorline
+"autocmd BufEnter * setlocal cursorline
 " "hi cursorcolumn ctermbg=247 ctermfg=?? guibg=grey70 guifg=??
 " hi cursorline ctermbg=247 guibg=grey70
 
@@ -317,14 +314,11 @@ let c_syntax_for_h=1
 ""imap <PageUp> <nop>
 ""imap <PageDown> <nop>
 
-nnoremap <silent> <F1> :A<CR>
-inoremap <silent> <F1> <ESC><CR>
+nnoremap <silent> <F1> :NERDTreeToggle<CR>
+inoremap <silent> <F1> :NERDTreeToggle<CR>
 
-nnoremap <silent> <F2> :Tlist<CR>
-inoremap <silent> <F2> <ESC>:Tlist<CR>
-
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
-inoremap <silent> <F3> :NERDTreeToggle<CR>
+nnoremap <silent> <F2> :A<CR>
+inoremap <silent> <F2> <ESC><CR>
 
 " simple tab switchting
 nnoremap <silent> T gT
@@ -351,70 +345,18 @@ let Tlist_Sort_Type = "order"
 let Tlist_Use_SingleClick = 1
 let tlist_c_settings = 'c;f:FUNCTIONS'
 
-
-" -----------------------------------------------------------------------------------------
-" neocomplcache
-" source: http://www.vim.org/scripts/script.php?script_id=2620
-" -----------------------------------------------------------------------------------------
-  
-
-" AutoComplPop like behavior.
-
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-
-" Enable omni completion.
-" -----------------------------------------------------------------------------------------
-"
-" indenting
-" source: http://vim.wikia.com/wiki/Making_Parenthesis_And_Brackets_Handling_Easier 
-"
-" -----------------------------------------------------------------------------------------
-
-"inoremap ( ()<Esc>:call BC_AddChar(")")<CR>i
-"inoremap { {<CR>}<Esc>:call BC_AddChar("}")<CR><Esc>kA<CR>
-"inoremap [ []<Esc>:call BC_AddChar("]")<CR>i
-"inoremap " ""<Esc>:call BC_AddChar("\"")<CR>i
-"" jump out of parenthesis
-"inoremap <C-j> <Esc>:call search(BC_GetChar(), "W")<CR>a
-"
-"function! BC_AddChar(schar)
-" if exists("b:robstack")
-" let b:robstack = b:robstack . a:schar
-" else
-" let b:robstack = a:schar
-" endif
-"endfunction
-"
-"function! BC_GetChar()
-" let l:char = b:robstack[strlen(b:robstack)-1]
-" let b:robstack = strpart(b:robstack, 0, strlen(b:robstack)-1)
-" return l:char
-"endfunction
-"
-"let g:slime_target = "tmux"
-
-"let g:vimclojure#SplitPos=
-"let g:vimclojure#WantNailgun=1
-"let g:vimclojure#NailgunClient="/usr/local/bin/ng"
-
-"" ctrl-m to send whole file to tmux repl
-"nmap <C-m> ggVG<C-c><C-c>
-
-
-"" ctrl-c ctrl-c to send current form to tmux repl
 filetype plugin indent on
 syntax on
 
 set hidden
-" let g:racer_cmd = "/Users/kyb/racer/target/release/racer"
-" let $RUST_SRC_PATH="/Users/kyb/rustc-1.0.0/src/"
+set wildmenu
+set showmatch           " higlight matching parenthesis
 
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+set laststatus=2
 

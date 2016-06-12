@@ -1,6 +1,5 @@
 # zshrc by j. szpilewski
 # it's a mess
-# nntp.pl
 setopt auto_pushd
 setopt PUSHD_IGNOREDUPS
 setopt PUSHD_SILENT
@@ -51,13 +50,8 @@ setopt share_history
 
 bindkey "\e[3~" delete-char
 
-#export GOROOT=$HOME/go
-#export DYLD_LIBRARY_PATH=/usr/local/mysql-5.5.20-osx10.6-x86_64/lib:$DYLD_LIBRARY_PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-#export PATH=/usr/local/share/python:$PATH
-#export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-#export GOPATH=$HOME/Documents/Go/medstime/src
 export PATH=/usr/local/sbin:$PATH
 function prompt_kerbaugh_help { print "nothing customizable yet"}
 
@@ -122,7 +116,7 @@ PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)
 ################################################################
 
 
-source /Users/kyb/zsh-git-prompt/zshrc.sh
+source $HOME/zsh-git-prompt/zshrc.sh
 #PROMPT='%B%m%~%b$(git_super_status) %# '
 
 prompt_kerbaugh_setup "$@"
@@ -133,9 +127,16 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$HOME/code/huescripts
-export RUST_SRC_PATH="/Users/kyb/rustc-1.0.0/src"
 
 alias v="ls -lh"
 alias vv="ls -thor"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+play () { . ~/.difm.conf
+	[[ -z $1 ]] && echo "$STATIONS" && return
+	mpg123 -C --no-gapless http://prem2.di.fm/$1_hi\?$API }
+
+rock () { . ~/.difm.conf
+	[[ -z $1 ]] && echo "$STATIONS_ROCK" && return
+	mpg123 -C --no-gapless http://prem2.rockradio.com/$1\?$API }

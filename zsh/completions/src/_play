@@ -1,0 +1,7 @@
+#compdef play
+
+local curcontext="$context" state line
+typeset -A opt_args
+. ~/.difm.conf
+_arguments "1: :($STATIONS)"
+
