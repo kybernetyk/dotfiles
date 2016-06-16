@@ -325,6 +325,7 @@ nnoremap <silent> T gT
 nnoremap <silent> t gt  
 "nnoremap <silent> <C-t> :tabnew<CR>
 "nnoremap <silent> <C-w> :tabclose<CR>
+nnoremap ; :
 
 " settings for taglist
 let Tlist_Auto_Highlight_Tag = 1

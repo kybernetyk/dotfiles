@@ -140,3 +140,6 @@ play () { . ~/.difm.conf
 rock () { . ~/.difm.conf
 	[[ -z $1 ]] && echo "$STATIONS_ROCK" && return
 	mpg123 -C --no-gapless http://prem2.rockradio.com/$1\?$API }
+
+
+archey
