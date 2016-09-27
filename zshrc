@@ -11,6 +11,8 @@ export LSCOLORS=dxfxcxdxgxegedabagacad
 autoload -U colors && colors
 autoload -U compinit && compinit
 
+zstyle ":completion:*:commands" rehash 1
+
 #show all killable processes for kill <tab>
 zstyle ':completion:*:kill:*:processes' command "ps x"
 
@@ -76,12 +78,12 @@ function prompt_kerbaugh_setup {
 
 	function prompt_kerbaugh_precmd {
 		issucceed "$?"
-#		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK@$BOLD_GREEN%m$BLACK]$BOLD_MAUVE%3c $HIST_COLOR%! $DEFAULT%# $RED $GREEN"
-PENIS=$(git_super_status)
-PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)$PENIS $RED# $DEFAULT"
+		#		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK@$BOLD_GREEN%m$BLACK]$BOLD_MAUVE%3c $HIST_COLOR%! $DEFAULT%# $RED $GREEN"
+		PENIS=$(git_super_status)
+		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)$PENIS $RED# $DEFAULT"
 	}
 
- 
+
 	#--------------------------------------------
 	# Color constants used in the prompt
 	#--------------------------------------------
@@ -102,11 +104,11 @@ PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)
 	WHITE="%{[0;37m%}"
 	DEFAULT="%{[0;39m%}"
 
- 
+
 
 	#typeset -ga precmd_functions
 	#precmd_functions+=prompt_kerbaugh_precmd
- 
+
 	function precmd { prompt_kerbaugh_precmd }
 
 }
@@ -128,18 +130,43 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$HOME/code/huescripts
 
-alias v="ls -lh"
-alias vv="ls -thor"
+alias v="ls -lh | lolcat"
+alias vv="ls -thor | lolcat"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 play () { . ~/.difm.conf
 	[[ -z $1 ]] && echo "$STATIONS" && return
-	mpg123 -C --no-gapless http://prem2.di.fm/$1_hi\?$API }
+	mpg123 -C --no-gapless http://prem2.di.fm/$1_hi\?$API 
+}
 
 rock () { . ~/.difm.conf
 	[[ -z $1 ]] && echo "$STATIONS_ROCK" && return
-	mpg123 -C --no-gapless http://prem2.rockradio.com/$1\?$API }
+	mpg123 -C --no-gapless http://prem2.rockradio.com/$1\?$API 
+}
+
+classic () { . ~/.difm.conf
+	[[ -z $1 ]] && echo "$STATIONS_CLASSIC" && return
+	mpg123 -C --no-gapless http://prem2.classicalradio.com/$1\?$API 
+}
+
+radio () { . ~/.difm.conf
+	[[ -z $1 ]] && echo "$STATIONS_RADIO" && return
+	mpg123 -C --no-gapless http://prem2.radiotunes.com/$1\?$API 
+}
+
+. ~/z.sh
 
 
-archey
+google() {
+	search=""
+	echo "Googling: $@"
+	for term in $@; do
+		search="$search%20$term"
+	done
+	open "http://www.google.com/search?q=$search"
+}
+
+
+
+fortune | lolcat

@@ -173,8 +173,10 @@ set encoding=utf-8
 set autoindent
 set smartindent
 set noerrorbells
-set incsearch
+"set incsearch
 set title
+set smartindent
+set sw=2
 
 set undolevels=500
 
@@ -187,6 +189,8 @@ set nobackup
 set noswapfile
 
 set autoread
+
+set ignorecase
 
 set laststatus=2
 set number
@@ -279,8 +283,8 @@ set visualbell t_vb=
 "autocmd BufEnter * setlocal cursorcolumn
 "autocmd WinEnter * setlocal cursorline
 "autocmd BufEnter * setlocal cursorline
-" "hi cursorcolumn ctermbg=247 ctermfg=?? guibg=grey70 guifg=??
-" hi cursorline ctermbg=247 guibg=grey70
+"hi cursorcolumn ctermbg=247 ctermfg=?? guibg=grey70 guifg=??
+"hi cursorline ctermbg=247 guibg=grey70
 
 "FIXME: add colors for some C99 stuff
 let c_C99=1
@@ -323,9 +327,10 @@ inoremap <silent> <F2> <ESC><CR>
 " simple tab switchting
 nnoremap <silent> T gT
 nnoremap <silent> t gt  
-"nnoremap <silent> <C-t> :tabnew<CR>
-"nnoremap <silent> <C-w> :tabclose<CR>
-nnoremap ; :
+nnoremap <silent> <C-t> :tabnew<CR>
+nnoremap <silent> <C-w> :tabclose<CR>
+"nnoremap ; :
+"nmap ;s :set spell<CR>
 
 " settings for taglist
 let Tlist_Auto_Highlight_Tag = 1
@@ -360,4 +365,24 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline_right_sep = ''
 "let g:airline_right_alt_sep = ''
 set laststatus=2
+
+set wrap
+
+set clipboard=unnamed
+
+
+if &term =~ "xterm.*"
+    let &t_ti = &t_ti . "\e[?2004h"
+    let &t_te = "\e[?2004l" . &t_te
+    function XTermPasteBegin(ret)
+        set pastetoggle=<Esc>[201~
+        set paste
+        return a:ret
+    endfunction
+    map <expr> <Esc>[200~ XTermPasteBegin("i")
+    imap <expr> <Esc>[200~ XTermPasteBegin("")
+    vmap <expr> <Esc>[200~ XTermPasteBegin("c")
+    cmap <Esc>[200~ <nop>
+    cmap <Esc>[201~ <nop>
+endif
 
