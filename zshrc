@@ -125,10 +125,10 @@ prompt_kerbaugh_setup "$@"
 
 export LC_CTYPE="en_US.UTF-8"
 
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$HOME/code/huescripts
+
+export EDITOR=vim
 
 alias v="ls -lh | lolcat"
 alias vv="ls -thor | lolcat"
@@ -167,6 +167,8 @@ google() {
 	open "http://www.google.com/search?q=$search"
 }
 
-
-
+export MAIL=/var/mail/kyb
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=$HOME/golang
+export PATH=$PATH:$GOPATH/bin
 fortune | lolcat
