@@ -171,4 +171,20 @@ export MAIL=/var/mail/kyb
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/golang
 export PATH=$PATH:$GOPATH/bin
-fortune | lolcat
+echo "DON'T FORGET: use ack instead of grep!"| lolcat
+DISABLE_AUTO_TITLE="true"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export LANG=en_EN.UTF-8
+export LC_ALL=en_US.UTF-8
+
+linx(){
+	curl -T "$@" -H "Linx-Randomize: yes" https://linx.li/upload/  
+}
+
+myip() {
+	curl $1 icanhazip.com
+}
+
+alias vimx='vim -c %\!xxd'
