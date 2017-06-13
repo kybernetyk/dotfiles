@@ -130,8 +130,7 @@ export PATH=$PATH:$HOME/code/huescripts
 
 export EDITOR=vim
 
-alias v="ls -lh | lolcat"
-alias vv="ls -thor | lolcat"
+alias ll="ls -la"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
