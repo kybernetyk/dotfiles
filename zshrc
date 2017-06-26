@@ -179,7 +179,15 @@ export LANG=en_EN.UTF-8
 export LC_ALL=en_US.UTF-8
 
 linx(){
-	curl -T "$@" -H "Linx-Randomize: yes" https://linx.li/upload/  
+	open `curl -T "$@" -H "Linx-Randomize: yes" https://linx.li/upload/`
+}
+
+upload() {
+    # write to output to tmpfile because of progress bar
+    tmpfile=$( mktemp -t transferXXX )
+    curl --progress-bar --upload-file $1 https://transfer.sh/$(basename $1) >> $tmpfile;
+    open `cat $tmpfile`;
+    rm -f $tmpfile;
 }
 
 myip() {

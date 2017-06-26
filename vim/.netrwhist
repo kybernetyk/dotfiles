@@ -1,11 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/kyb/code/soundhammer/.git/modules'
-let g:netrw_dirhist_2='/Users/kyb/r'
-let g:netrw_dirhist_3='/Users/kyb/code/fettemama2/.git'
-let g:netrw_dirhist_4='/usr/local/etc/privoxy'
-let g:netrw_dirhist_5='/Users/kyb/code/tempserv/.git'
-let g:netrw_dirhist_6='/Users/kyb/code/BatteryStatPro/.git'
-let g:netrw_dirhist_7='/Users/kyb/code/vector3/.git/modules/cmrater'
-let g:netrw_dirhist_8='/Users/kyb/.vim'
-let g:netrw_dirhist_9='/Users/kyb/Dropbox/Notebooks/NFrame'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/kyb/Downloads/DwSounds'
