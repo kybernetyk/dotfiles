@@ -1,22 +1,20 @@
-" vimrc by Leon Szpilewski
-" it's a mess :]
-" http://xr0.eu 
-
-
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
 	finish
 endif
 
-inoremap jj <ESC>
+noremap <C-a> <Home>
+noremap <C-e> <End>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
 
 set t_Co=256
 if has("gui_running")
 	set background=dark
 	colorscheme tir_black
 else
- set background=dark
- colorscheme slate
+	set background=dark
+	colorscheme slate
 endif
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -110,70 +108,11 @@ if $VIM_CRONTAB == "true"
 	set nowritebackup
 endif
 
-" omnicppcomplete options
-"map <C-x><C-x><C-T> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/.vim/commontags /usr/include /usr/local/include<CR><CR>
-"set tags+=~/.vim/commontags
-
-" --- OmniCppComplete ---
-" -- required --
-"set nocp " non vi compatible mode
-"filetype plugin on " enable plugins
-
-" -- optional --
-" auto close options when exiting insert mode or moving away
-"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"set completeopt=menu,menuone
-
-" -- configs --
-"let OmniCpp_MayCompleteDot = 1 " autocomplete with .
-"let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
-"let OmniCpp_MayCompleteScope = 0 " autocomplete with ::
-"let OmniCpp_SelectFirstItem = 2 " select first item (but don't insert)
-"let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
-"let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
-"let OmniCpp_LocalSearchDecl = 1 " don't require special style of function opening braces
-"let OmniCpp_ShowAccess = 0
-" -- ctags --
-" map <ctrl>+F12 to generate ctags for current folder:
-"map <C-x><C-t> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
-" add current directory's generated tags file to available tags
-"set tags+=./tags
-
-" Setup the tab key to do autocompletion
-"function! CompleteTab()
-"	let prec = strpart( getline('.'), 0, col('.')-1 )
-"	if prec =~ '^\s*$' || prec =~ '\s$'
-"		return "\<tab>"
-"	else
-"		return "\<c-x>\<c-o>"
-"	endif
-"endfunction
-
-"inoremap <tab> <c-r>=CompleteTab()<cr>
-
-"function! SuperCleverTab()
-"	if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
-"		return "\<Tab>"
-"	else
-"		if &omnifunc != ''
-"			return "\<C-X>\<C-O>"
-"		elseif &dictionary != ''
-"			return "\<C-K>"
-"		else
-"			return "\<C-N>"
-"		endif
-"	endif
-"endfunction
-
-"inoremap <Tab> <C-R>=SuperCleverTab()<cr>
-
 set backspace=indent,eol,start
 set encoding=utf-8
 set autoindent
 set smartindent
 set noerrorbells
-"set incsearch
 set title
 set smartindent
 set sw=2
@@ -201,12 +140,6 @@ set hlsearch
 set showmode
 set showcmd
 set showmatch
-"set wildchar=<TAB>
-set nowrap
-
-" omni menu colors
-hi Pmenu guibg=#7f7f7f guifg=#ffffff
-hi PmenuSel guibg=#d9fefe guifg=#002e41
 
 if has("gui_running")
 	"FIXME: fix for both term and gui
@@ -214,10 +147,10 @@ if has("gui_running")
 		set titlestring=editing:\ %-25.55F\ %a%r%m titlelen=70 "
 	endif
 	set guifont=Monaco:h13
-	
-if v:progname =~? "gvim"
-	set guifont=Monospace
-endif
+
+	if v:progname =~? "gvim"
+		set guifont=Monospace
+	endif
 	"set guifont=Terminus:h14
 	"set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
 	"no toolbar
@@ -225,7 +158,6 @@ endif
 	" don't use ALT keys for menus.
 	set winaltkeys=no
 	"set guicursor=a:blinkon0
-
 endif " has("gui")
 
 "FIXME use same as for 79
@@ -286,7 +218,7 @@ set visualbell t_vb=
 "hi cursorcolumn ctermbg=247 ctermfg=?? guibg=grey70 guifg=??
 "hi cursorline ctermbg=247 guibg=grey70
 
-"FIXME: add colors for some C99 stuff
+"add colors for some C99 stuff
 let c_C99=1
 let c_c_vim_compatible=1
 let c_comment_strings=1
@@ -304,7 +236,7 @@ let c_gnu=1
 let c_syntax_for_h=1
 
 " unmap arrows/pgdn/pgup so you learn to use hjkl
-""jmap <Left> \
+"map <Left> \
 ""map <Right> \
 ""map <Up> \
 ""map <Down> \
@@ -318,11 +250,9 @@ let c_syntax_for_h=1
 ""imap <PageUp> <nop>
 ""imap <PageDown> <nop>
 
-nnoremap <silent> <F1> :NERDTreeToggle<CR>
-inoremap <silent> <F1> :NERDTreeToggle<CR>
 
-nnoremap <silent> <F2> :A<CR>
-inoremap <silent> <F2> <ESC><CR>
+nnoremap <silent> <F1> :A<CR>
+inoremap <silent> <F1> <ESC><CR>
 
 " simple tab switchting
 nnoremap <silent> T gT
@@ -332,25 +262,6 @@ nnoremap <silent> <C-w> :tabclose<CR>
 "nnoremap ; :
 "nmap ;s :set spell<CR>
 
-" settings for taglist
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Auto_Open = 0
-let Tlist_Auto_Update = 1
-let Tlist_Compact_Format = 1
-let Tlist_Display_Prototype = 0
-let Tlist_Show_Menu = 1
-let Tlist_Display_Tag_Scope = 0
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Highlight_Tag_On_BufEnter = 1
-let Tlist_Process_File_Always = 1
-let Tlist_Max_Tag_Length = 20
-let Tlist_Show_One_File = 1
-let Tlist_Sort_Type = "order"
-let Tlist_Use_SingleClick = 1
-let tlist_c_settings = 'c;f:FUNCTIONS'
-
 filetype plugin indent on
 syntax on
 
@@ -358,12 +269,13 @@ set hidden
 set wildmenu
 set showmatch           " higlight matching parenthesis
 
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline_left_sep = ''
 "let g:airline_left_alt_sep = ''
 "let g:airline_right_sep = ''
 "let g:airline_right_alt_sep = ''
+let g:airline_powerline_fonts = 1
 set laststatus=2
 
 set wrap
@@ -372,17 +284,39 @@ set clipboard=unnamed
 
 
 if &term =~ "xterm.*"
-    let &t_ti = &t_ti . "\e[?2004h"
-    let &t_te = "\e[?2004l" . &t_te
-    function XTermPasteBegin(ret)
-        set pastetoggle=<Esc>[201~
-        set paste
-        return a:ret
-    endfunction
-    map <expr> <Esc>[200~ XTermPasteBegin("i")
-    imap <expr> <Esc>[200~ XTermPasteBegin("")
-    vmap <expr> <Esc>[200~ XTermPasteBegin("c")
-    cmap <Esc>[200~ <nop>
-    cmap <Esc>[201~ <nop>
+	let &t_ti = &t_ti . "\e[?2004h"
+	let &t_te = "\e[?2004l" . &t_te
+	function XTermPasteBegin(ret)
+		set pastetoggle=<Esc>[201~
+		set paste
+		return a:ret
+	endfunction
+	map <expr> <Esc>[200~ XTermPasteBegin("i")
+	imap <expr> <Esc>[200~ XTermPasteBegin("")
+	vmap <expr> <Esc>[200~ XTermPasteBegin("c")
+	cmap <Esc>[200~ <nop>
+	cmap <Esc>[201~ <nop>
 endif
+
+execute pathogen#infect()
+
+set formatoptions=l
+set lbr
+
+set textwidth=0
+set wrapmargin=0
+set wrap
+set linebreak
+set columns=80
+
+"commenting
+map <C-_> gcc
+imap <C-_> <Esc>gcc
+
+"indenting
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 

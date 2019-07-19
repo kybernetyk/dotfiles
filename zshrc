@@ -1,5 +1,7 @@
 # zshrc by j. szpilewski
 # it's a mess
+stty -ixon
+
 setopt auto_pushd
 setopt PUSHD_IGNOREDUPS
 setopt PUSHD_SILENT
@@ -79,8 +81,9 @@ function prompt_kerbaugh_setup {
 	function prompt_kerbaugh_precmd {
 		issucceed "$?"
 		#		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK@$BOLD_GREEN%m$BLACK]$BOLD_MAUVE%3c $HIST_COLOR%! $DEFAULT%# $RED $GREEN"
-		PENIS=$(git_super_status)
-		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)$PENIS $RED# $DEFAULT"
+#		PENIS=$(git_super_status)
+#		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)$PENIS $RED# $DEFAULT"
+		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK) $RED$ $DEFAULT"
 	}
 
 
@@ -118,40 +121,48 @@ function prompt_kerbaugh_setup {
 ################################################################
 
 
-source $HOME/zsh-git-prompt/zshrc.sh
+#source $HOME/zsh-git-prompt/zshrc.sh
 #PROMPT='%B%m%~%b$(git_super_status) %# '
 
 prompt_kerbaugh_setup "$@"
 
 export LC_CTYPE="en_US.UTF-8"
 
-export PATH=$HOME/bin:$PATH
-export PATH=$PATH:$HOME/code/huescripts
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/scripts:$PATH
+export PATH=$HOME/.local/scripts/hue:$PATH
+export PATH=$PATH:$HOME/src/huescripts
+export PATH=/usr/local/bin:$PATH
 
 export EDITOR=vim
+export BROWSER=firefox
 
-alias ll="ls -la"
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 play () { . ~/.difm.conf
 	[[ -z $1 ]] && echo "$STATIONS" && return
-	mpg123 -C --no-gapless http://prem2.di.fm/$1_hi\?$API 
+	mpg123 -o pulse -C --no-gapless http://prem2.di.fm/$1_hi\?$API 
 }
 
 rock () { . ~/.difm.conf
 	[[ -z $1 ]] && echo "$STATIONS_ROCK" && return
-	mpg123 -C --no-gapless http://prem2.rockradio.com/$1\?$API 
+	mpg123 -o pulse -C --no-gapless http://prem2.rockradio.com/$1\?$API 
 }
 
 classic () { . ~/.difm.conf
 	[[ -z $1 ]] && echo "$STATIONS_CLASSIC" && return
-	mpg123 -C --no-gapless http://prem2.classicalradio.com/$1\?$API 
+	mpg123 -o pulse -C --no-gapless http://prem2.classicalradio.com/$1\?$API 
 }
 
 radio () { . ~/.difm.conf
 	[[ -z $1 ]] && echo "$STATIONS_RADIO" && return
-	mpg123 -C --no-gapless http://prem2.radiotunes.com/$1\?$API 
+	mpg123 -o pulse -C --no-gapless http://prem2.radiotunes.com/$1\?$API 
+}
+
+soma () {
+	#mpg123 -o pulse -C --no-gapless -@ http://somafm.com/missioncontrol.pls
+	mpv http://somafm.com/missioncontrol.pls
 }
 
 . ~/z.sh
@@ -166,15 +177,9 @@ google() {
 	open "http://www.google.com/search?q=$search"
 }
 
-export MAIL=/var/mail/kyb
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=$HOME/golang
-export PATH=$PATH:$GOPATH/bin
-echo "DON'T FORGET: use ack instead of grep!"| lolcat
-DISABLE_AUTO_TITLE="true"
+#echo "DON'T FORGET: use ack instead of grep!"| lolcat
+#DISABLE_AUTO_TITLE="true"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 export LANG=en_EN.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -195,3 +200,19 @@ myip() {
 }
 
 alias vimx='vim -c %\!xxd'
+#export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="$PATH:/$HOME/.local/go/bin"
+
+alias pbcopy="xclip"
+alias ls="ls -hN --color=auto --group-directories-first"
+alias ll="ls -la" 
+alias r="vifm ."
+alias grep="grep --color=auto"
+export PATH="$(du /home/kyb/.local/scripts |cut -f2 |grep -v .git |tr '\n' ':')$PATH"
+export MOZ_USE_XINPUT2=1
+export QT_FONT_DPI=180
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export GOPATH="$HOME/.local/go"
+export GPG_TTY=$(tty)
