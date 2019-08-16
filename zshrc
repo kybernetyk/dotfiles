@@ -204,10 +204,13 @@ alias vimx='vim -c %\!xxd'
 export PATH="/usr/local/sbin:/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="$PATH:/$HOME/.local/go/bin"
+export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
 
 alias pbcopy="xclip"
+#alias startx="startx -ardelay 300 -arinterval 25"
 alias ls="ls -hN --color=auto --group-directories-first"
-alias ll="ls -la" 
+alias ll="ls -l" 
+alias la="ls -la"
 alias r="vifm ."
 alias grep="grep --color=auto"
 export PATH="$(du /home/kyb/.local/scripts |cut -f2 |grep -v .git |tr '\n' ':')$PATH"
@@ -216,3 +219,5 @@ export QT_FONT_DPI=180
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GOPATH="$HOME/.local/go"
 export GPG_TTY=$(tty)
+
+echo "[i]: ctrl-shift-space to enter selection mode"
