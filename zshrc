@@ -120,10 +120,6 @@ function prompt_kerbaugh_setup {
 
 ################################################################
 
-
-#source $HOME/zsh-git-prompt/zshrc.sh
-#PROMPT='%B%m%~%b$(git_super_status) %# '
-
 prompt_kerbaugh_setup "$@"
 
 export LC_CTYPE="en_US.UTF-8"
@@ -136,9 +132,6 @@ export PATH=/usr/local/bin:$PATH
 
 export EDITOR=vim
 export BROWSER=firefox
-
-
-#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 play () { . ~/.difm.conf
 	[[ -z $1 ]] && echo "$STATIONS" && return
@@ -177,8 +170,6 @@ google() {
 	open "http://www.google.com/search?q=$search"
 }
 
-#echo "DON'T FORGET: use ack instead of grep!"| lolcat
-#DISABLE_AUTO_TITLE="true"
 
 export LANG=en_EN.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -200,14 +191,12 @@ myip() {
 }
 
 alias vimx='vim -c %\!xxd'
-#export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
 export PATH="/usr/local/sbin:/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="$PATH:/$HOME/.local/go/bin"
 export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
 
 alias pbcopy="xclip"
-#alias startx="startx -ardelay 300 -arinterval 25"
 alias ls="ls -hN --color=auto --group-directories-first"
 alias ll="ls -l" 
 alias la="ls -la"
@@ -215,7 +204,7 @@ alias r="vifm ."
 alias grep="grep --color=auto"
 export PATH="$(du /home/kyb/.local/scripts |cut -f2 |grep -v .git |tr '\n' ':')$PATH"
 export MOZ_USE_XINPUT2=1
-export QT_FONT_DPI=180
+export QT_FONT_DPI=180 #120 for X280, 180 for HIDPI 4k
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GOPATH="$HOME/.local/go"
 export GPG_TTY=$(tty)
