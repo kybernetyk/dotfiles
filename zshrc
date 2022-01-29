@@ -79,8 +79,9 @@ function prompt_kerbaugh_setup {
 	function prompt_kerbaugh_precmd {
 		issucceed "$?"
 		#		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK@$BOLD_GREEN%m$BLACK]$BOLD_MAUVE%3c $HIST_COLOR%! $DEFAULT%# $RED $GREEN"
-		PENIS=$(git_super_status)
-		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)$PENIS $RED# $DEFAULT"
+#		PENIS=$(git_super_status)
+#		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK)$PENIS $RED# $DEFAULT"
+		PS1="${PREFIX}[$BOLD_BLUE%n$BLACK::$BOLD_GREEN%m$BLACK]->($BOLD_YELLOW%3c$BLACK) $RED# $DEFAULT"
 	}
 
 
@@ -118,7 +119,7 @@ function prompt_kerbaugh_setup {
 ################################################################
 
 
-source $HOME/zsh-git-prompt/zshrc.sh
+#source $HOME/zsh-git-prompt/zshrc.sh
 #PROMPT='%B%m%~%b$(git_super_status) %# '
 
 prompt_kerbaugh_setup "$@"
@@ -126,13 +127,14 @@ prompt_kerbaugh_setup "$@"
 export LC_CTYPE="en_US.UTF-8"
 
 export PATH=$HOME/bin:$PATH
-export PATH=$PATH:$HOME/code/huescripts
+export PATH=$PATH:$HOME/src/huescripts
+export PATH=/usr/local/bin:$PATH
 
 export EDITOR=vim
 
-alias ll="ls -la"
+alias ll="ls -l"
+alias lla="ls -la"
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 play () { . ~/.difm.conf
 	[[ -z $1 ]] && echo "$STATIONS" && return
@@ -170,11 +172,10 @@ export MAIL=/var/mail/kyb
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/golang
 export PATH=$PATH:$GOPATH/bin
-echo "DON'T FORGET: use ack instead of grep!"| lolcat
 DISABLE_AUTO_TITLE="true"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+#export PATH="$PATH:$HOME/.rvm/bin"
 export LANG=en_EN.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -195,3 +196,17 @@ myip() {
 }
 
 alias vimx='vim -c %\!xxd'
+#export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+
+#iterminator -s "Monokai Soda"
+#iterminator -s "WildCherry"
+#iterminator -s "Glacier" 2>/dev/null
+#iterminator -s "MonaLisa" 2>/dev/null
+export GPG_TTY=$(tty)
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.0.0/bin:$PATH"

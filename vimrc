@@ -386,3 +386,8 @@ if &term =~ "xterm.*"
     cmap <Esc>[201~ <nop>
 endif
 
+
+execute pathogen#infect()
+
+
+
